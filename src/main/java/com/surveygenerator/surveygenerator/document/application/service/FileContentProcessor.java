@@ -13,12 +13,12 @@ import java.nio.charset.StandardCharsets;
 public class FileContentProcessor {
 
     public String extractContent(MultipartFile file) {
-        log.debug("Extracting content from file: {}", file.getOriginalFilename());
+        log.info("Extracting content from file: {}", file.getOriginalFilename());
 
         try {
             String content = new String(file.getBytes(), StandardCharsets.UTF_8);
 
-            log.debug("Content extracted successfully, length: {}", content.length());
+            log.info("Content extracted successfully, length: {}", content.length());
 
             return content;
 
@@ -34,7 +34,7 @@ public class FileContentProcessor {
             return ValidatorResult.error("Uploaded file is empty");
         }
 
-        log.debug("Content validation successful");
+        log.info("Content validation successful");
         return ValidatorResult.success(content);
     }
 }

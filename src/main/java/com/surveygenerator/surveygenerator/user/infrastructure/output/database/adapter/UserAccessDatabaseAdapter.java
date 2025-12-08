@@ -6,12 +6,14 @@ import com.surveygenerator.surveygenerator.user.infrastructure.output.database.e
 import com.surveygenerator.surveygenerator.user.infrastructure.output.database.mapper.UserEntityMapper;
 import com.surveygenerator.surveygenerator.user.infrastructure.output.database.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class UserAccessDatabaseAdapter implements UserAccessDatabasePort {
 
     private final UserRepository userRepository;
@@ -30,6 +32,7 @@ public class UserAccessDatabaseAdapter implements UserAccessDatabasePort {
     @Override
     public UserModel save(UserModel userModel) {
         UserEntity entityToSave = userEntityMapper.toEntity(userModel);
+        log.info("Saving user: {}", entityToSave.getEmail());
         UserEntity savedEntity = userRepository.save(entityToSave);
         return userEntityMapper.toModel(savedEntity);
     }

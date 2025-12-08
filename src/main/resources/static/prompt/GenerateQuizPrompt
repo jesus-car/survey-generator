@@ -2,6 +2,9 @@ Based on the provided {document}, generate a total of {q} well-crafted multiple-
 
 Instructions:
 - Do NOT include any explanations — only output the required JSON structure.
+- Output ONLY valid JSON. Do not include any text before or after the JSON.
+- Use proper JSON escaping for special characters (newlines as \n, tabs as \t, quotes as \", backslashes as \\).
+- Keep all text on single lines within JSON strings. Do not use literal line breaks or tabs inside string values.
 - Each question should be clearly written and unique.
 - The answer options must be varied, non-repetitive, and contextually consistent with the question and the content of the document.
 - Distractor options should be plausible and not obviously incorrect.

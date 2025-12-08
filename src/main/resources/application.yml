@@ -7,11 +7,19 @@ spring:
             database: test-webflux
 
     ai:
-        ollama:
-            base-url: http://localhost:11434
-            chat:
-                options:
-                    model: gemma3
+        azure:
+            openai:
+                api-key:
+                endpoint:
+                chat:
+                    options:
+                        deployment-name: gpt-5-nano
+                        temperature: 1.0
+#        ollama:
+#            base-url: http://localhost:11434
+#            chat:
+#                options:
+#                    model: gemma3
 
 #aws:
 #    s3:

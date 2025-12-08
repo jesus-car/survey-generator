@@ -9,12 +9,14 @@ import com.surveygenerator.surveygenerator.user.application.port.output.UserAcce
 import com.surveygenerator.surveygenerator.user.domain.model.UserModel;
 import com.surveygenerator.surveygenerator.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserAccessDatabasePort userAccessDatabasePort;
@@ -34,6 +36,8 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
 
         String accessToken = jwtUtils.generateAccessToken(user);
+
+        log.info("User with email {} success login", request.email());
 
         return new UserLoginResponse(accessToken);
     }

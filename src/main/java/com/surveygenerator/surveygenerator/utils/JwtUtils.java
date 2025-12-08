@@ -17,6 +17,7 @@ public class JwtUtils {
     private final Long expirationTime = 86400000L; // 1 day in milliseconds
 
     public String generateAccessToken(UserModel user) {
+        log.info("Generating access token for user: {}", user.getEmail());
         return generateToken(getExtraClaims(user), user);
     }
 

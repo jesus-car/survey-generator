@@ -60,8 +60,14 @@ public class DocumentService {
     }
 
     private QuizResponse saveQuiz(QuizResponse response, String userId) {
-        QuizModel quizModel = quizMapper.toModel(response, userId);
-        quizAccessDatabasePort.save(quizModel);
+        // Only save to database if user is authenticated
+        if (userId != null) {
+            log.info("Saving generated quiz for userId: {}", userId);
+            QuizModel quizModel = quizMapper.toModel(response, userId);
+            quizAccessDatabasePort.save(quizModel);
+        } else {
+            log.debug("Skipping database save for anonymous user");
+        }
         return response;
     }
 
