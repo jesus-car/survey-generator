@@ -1,0 +1,11 @@
+Based on the provided {document}, generate a total of {q} well-crafted multiple-choice questions. Each question must have exactly {o} answer options, with only one correct answer.
+
+Instructions:
+- Do NOT include any explanations — only output the required JSON structure.
+- Each question should be clearly written and unique.
+- The answer options must be varied, non-repetitive, and contextually consistent with the question and the content of the document.
+- Distractor options should be plausible and not obviously incorrect.
+- Avoid including easy or overly obvious answers.
+- If the document lacks sufficient content for {q} questions, intelligently infer and generate additional questions that align with the context and information from the document.
+
+Use the following JSON structure for your output: {format}

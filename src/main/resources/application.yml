@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: survey-generator
+    data:
+        mongodb:
+            uri: mongodb://localhost/test
+            database: test-webflux
+
+    ai:
+        ollama:
+            base-url: http://localhost:11434
+            chat:
+                options:
+                    model: gemma3
+
+#aws:
+#    s3:
+#        bucket: initial-webflux
+#    credentials:
+#        access-key: ${AWS_ACCESS_KEY:default-access-key}
+#        secret-key: ${AWS_SECRET_KEY:default-secret-key}
