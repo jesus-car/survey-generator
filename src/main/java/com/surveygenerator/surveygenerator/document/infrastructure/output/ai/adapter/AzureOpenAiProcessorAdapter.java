@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.azure.openai.AzureOpenAiChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.stereotype.Component;
 
@@ -30,12 +31,14 @@ public class AzureOpenAiProcessorAdapter implements AiProcessorPort {
                 .format(outputConverter.getFormat())
                 .build();
 
+        Prompt prompt = promptFactory.generatePrompt(surveyPromptOptions);
+
         log.info("Generating questions from markdown content using Azure OpenAI");
         ChatResponse response = azureOpenAiChatModel
-                .call(promptFactory.generatePrompt(surveyPromptOptions));
+                .call(prompt);
 
         String responseContent = response.getResult().getOutput().getText();
-        log.debug("Azure OpenAI response content: {}", responseContent);
+        log.info("Azure OpenAI response successfully received");
 
         return outputConverter.convert(responseContent);
     }

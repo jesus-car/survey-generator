@@ -1,6 +1,8 @@
 spring:
     application:
         name: survey-generator
+    profiles:
+        active: dev
     data:
         mongodb:
             uri: mongodb://localhost/test
@@ -9,8 +11,8 @@ spring:
     ai:
         azure:
             openai:
-                api-key:
-                endpoint:
+                api-key: ${AZURE_OPENAI_API_KEY}
+                endpoint: ${AZURE_OPENAI_ENDPOINT}
                 chat:
                     options:
                         deployment-name: gpt-5-nano
